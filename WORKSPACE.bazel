@@ -1,0 +1,10 @@
+workspace(name = "IncarnationVR")
+
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+
+http_archive(
+    name = "gtest",
+    build_file = "@//:gtest.BUILD",
+    sha256 = "94c634d499558a76fa649edb13721dce6e98fb1e7018dfaeba3cd7a083945e91",
+    url = "https://github.com/google/googletest/archive/refs/tags/release-1.12.0.zip",
+)
