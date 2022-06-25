@@ -1,6 +1,7 @@
 #include <iostream>
+#include "greeting.hpp"
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    std::cout << greeting() << std::endl;
     return 0;
 }
