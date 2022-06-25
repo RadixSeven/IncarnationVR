@@ -10,5 +10,5 @@ cc_library(
         "greeting.cpp",
     ],
     hdrs = ["greeting.hpp"],
-    deps = [],
+    visibility = ["//test:__pkg__"],
 )
