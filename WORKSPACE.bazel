@@ -12,16 +12,27 @@ http_archive(
     urls = ["https://github.com/google/googletest/archive/5376968f6948923e2411081fd9372e71a59d8e77.zip"],
 )
 
-http_archive(
-    name = "rules_foreign_cc",
-    sha256 = "73aaf397ce8774c5ca7f5efa0f7ab7cb95860e975bffa8406a22c7079ebb1238",
-    strip_prefix = "rules_foreign_cc-0dafcb29a8ce9c3b49a211ebba6c9c0f79eb93d6",
-    url = "https://github.com/bazelbuild/rules_foreign_cc/archive/0dafcb29a8ce9c3b49a211ebba6c9c0f79eb93d6.tar.gz",
-)
+####
+# The below code allows using conan dependencies, however it has two problems:
+# 1. You have to build using conan. Conan calls bazel not bazel calls conan. If
+#    I were to continue with this, I'd make a gen_rule or some similar Starlark
+#    function that accessed the BazelDeps functionality.
+# 2. Conan holds onto the file handles when bazel fails. You have to manually
+#    kill the appropriate java.exe process in windows Resource Monitor (search
+#    for a piece of the hash portion of the path) in order to continue with each
+#    failure and that takes a minute or two.
+#
+# Since I'm only going to need a couple of dependencies (crosses fingers), I'm
+# going to try using the bazel native way: building dependencies from source. I'm
+# leaving this note in case that takes too long or is otherwise unworkable. Then
+# I can try using Conan again.
 
-load("@rules_foreign_cc//foreign_cc:repositories.bzl", "rules_foreign_cc_dependencies")
+# Use this if conanfile.py is in ./conandeps
+#    load("@//conandeps:dependencies.bzl", "load_conan_dependencies")
+# Use this if conanfile.py is in .
+load("@//:dependencies.bzl", "load_conan_dependencies")
 
-rules_foreign_cc_dependencies()
+load_conan_dependencies()
 
 #http_archive(
 #    name = "com_valve_openvr",

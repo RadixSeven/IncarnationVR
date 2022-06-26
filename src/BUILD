@@ -5,6 +5,8 @@ cc_binary(
     srcs = ["main.cpp"],
     deps = [
         "greeting",
+        "@boost",
+        "@openvr",
         #        "//com_valve_openvr:main",
     ],
 )
