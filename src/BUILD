@@ -3,7 +3,10 @@
 cc_binary(
     name = "main",
     srcs = ["main.cpp"],
-    deps = ["greeting"],
+    deps = [
+        "greeting",
+        #        "//com_valve_openvr:main",
+    ],
 )
 
 cc_library(
