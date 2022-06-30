@@ -1,6 +1,15 @@
 # IncarnationVR
 A system for controlling VR avatars - and maybe more.
 
+# Archived
+I've archived this repo because the project is a duplicate.
+
+It turns out that [Ju1ce Mediapipe (free)](https://github.com/ju1ce/Mediapipe-VR-Fullbody-Tracking) 
+and [Driver4VR (commercial)](https://store.steampowered.com/app/1366950/Driver4VR/) already 
+provide software in this area. I missed them in my initial search, only finding 
+[MoCapForAll](https://akiya-research-institute.github.io/MocapForAll-Manual/en/), which was
+inadequate and overpriced.
+
 ## License
 
 Incarnation VR
